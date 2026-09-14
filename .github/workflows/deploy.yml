@@ -3,7 +3,7 @@ name: Deploy to Kind
 on:
   workflow_call:
     inputs:
-      environmet:
+      environment:
         required: true
         type: string
 
