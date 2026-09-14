@@ -10,7 +10,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: ${{ .inputs.environment }}
+    environment: ${{ inputs.environment }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,14 +35,14 @@ jobs:
           helm install todoapp ./todoapp/ \
           -f ./todoapp/values.yaml \
           --dry-run \
-          --namespace ${{ .inputs.environment }} \
+          --namespace ${{ inputs.environment }} \
           --create-namespace
 
       - name: Helm upgrade
         run: |
           helm upgrade --install todoapp ./todoapp/ \
           -f ./todoapp/values.yaml \
-          --namespace ${{ .inputs.environment }} \
+          --namespace ${{ inputs.environment }} \
           --create-namespace \
           --atomic \
           --timeout 3600s
